@@ -34,6 +34,13 @@ public function deletar($id)
 
 $categoria = $this->findOneBy(["id" =>$id]);
 
+    if ($categoria){
+        $this->getEntityManager()->remove($categoria);
+        $this->getEntityManager()->flush();
+
+        return true;
+    }
+return false;
 }
 
 }
